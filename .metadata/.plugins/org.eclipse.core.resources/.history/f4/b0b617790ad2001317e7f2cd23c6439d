@@ -1,0 +1,70 @@
+public class OpenHashSet extends SimpleHashSet {
+    
+	private static final String FLAG = "";
+	private String[] hashTable;
+	
+	public OpenHashSet() {
+		super();
+		hashTable = new String[capacity];
+	}
+
+	public OpenHashSet(float upperLoadFactor, float lowerLoadFactor) {
+		super(upperLoadFactor, lowerLoadFactor);
+		hashTable = new String[capacity];
+	}
+	
+	public OpenHashSet(java.lang.String[] data) {
+		super();
+		hashTable = new String[capacity];
+		for(int i=0;i<data.length;i++){
+			
+		}
+	}
+
+	@Override
+	public boolean add(String newValue) {
+		int cell = newValue.hashCode();
+		for(int i=1;i<=capacity;i++){
+            if(this.hashTable[cell] == null || this.hashTable[cell] == FLAG) {
+				this.hashTable[cell] = newValue;
+				this.numOfElem++;
+				return true;
+			} else {
+				cell = newValue.hashCode() + (i + i^2)/2;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean contains(String searchVal) {
+		int cell = searchVal.hashCode();
+		for(int i=1;i<=capacity;i++){
+			if(this.hashTable[cell] == null){
+				return false;
+			} else if(this.hashTable[cell] == searchVal){
+				return true;
+			} else {
+				cell = searchVal.hashCode() + (i + i^2)/2;
+			}
+		}
+		
+		return false;
+	}
+
+	@Override
+	public boolean delete(String toDelete) {
+		int cell = toDelete.hashCode();
+		for(int i=1;i<=capacity;i++){
+			if(this.hashTable[cell] == null){
+				return false;
+			} else if(this.hashTable[cell] == toDelete){
+				this.hashTable[cell] = FLAG;
+				return true;
+			} else {
+				cell = toDelete.hashCode() + (i + i^2)/2;
+			}
+		}
+		return false;
+	}
+}

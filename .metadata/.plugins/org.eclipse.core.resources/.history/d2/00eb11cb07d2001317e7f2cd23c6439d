@@ -1,0 +1,31 @@
+
+public abstract class SimpleHashSet implements SimpleSet {
+	protected int capacity;
+	protected static float lowerLoad = 0.25f, upperLoad = 0.75f;
+	protected int numOfElem = 0;
+	
+	
+	public SimpleHashSet() {
+	    capacity = 16;
+	}
+	
+	public SimpleHashSet(float upperLoadFactor, float lowerLoadFactor){
+		capacity = 16;
+		upperLoad = upperLoadFactor;
+		lowerLoad = lowerLoadFactor;
+	}
+
+	@Override
+	public abstract boolean add(String newValue);
+
+	@Override
+	public abstract boolean contains(String searchVal);
+
+	@Override
+	public abstract boolean delete(String toDelete);
+
+	@Override
+	public int size() {
+		return numOfElem;
+	}
+}
