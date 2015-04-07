@@ -1,0 +1,70 @@
+aviadle
+
+
+===============================
+=  README for ex5:  AvlTree   =
+===============================
+
+
+==================
+=  Description:  =
+==================
+
+this jar file contain-
+    AvlTree.java - the main class of the tree. contain the method mentions in
+                   API, and some helping methods.
+    AvlNode.java - class that contain the constructor for the nodes of the tree,
+                   in order to deal with its data.
+
+
+===================================
+=     List Of Submitted Files     =
+===================================
+
+  README - This file
+  AvlTree.java
+  AvlNode.java
+
+=================================
+=     Question asked in pdf     =
+=================================
+
+1.  See Description above, and JavaDoc.
+2.  Implementation of add():
+      First, I checked if the value given is in the tree. if yes, then false is returned.
+      Otherwise, i sent the value and the tree to helping method I built, that
+      this method return the tree after adding. then i return true.
+      Inside the method, i go over the tree (according to the rules: left is smaller
+      and right is bigger value), until a empty place to add is found. then i insert
+      the value and update all its data (parent, height..). then i send the node to balancing.
+      in the end of the process i set the root of the tree to be the current node,
+      and then the method is ended. then, in the main add method, i use updateRoot 
+      in order to the root to be the actual root and not just the node i added.
+      then, done!
+    Implementation of delete():
+      First, I checked if the value given is in the tree. if not, then false is returned.
+      Otherwise, i sent the value and the tree to helping method I built, that
+      this method return the tree after deleting. then i return true.
+      Inside the method, i go over the tree (according to the rules: left is smaller
+      and right is bigger value), until the value toDelete is found. then i check
+      the node status:
+        - if the node is leaf, then i only need to delete, and nothing else.
+        - if the node have only one child, then i need to connect the child to
+          the current node parent, and then delete current node.
+        - if the node have 2 children, i replace the current value of the node
+          with its succesor, and then delete the succesor (if the succesor have
+          a right child, connect to its parent.
+      then i sent the node to balancing. in the end of the process i set the root
+      of the tree to be the current node, and then the method is ended.
+      then, in the main delete method, i use updateRoot in order to the root to be 
+      the actual root and not just the node i added.
+      then, done!
+3.  the series of 12 numbers is: 8,5,11,3,7,10,12,2,4,6,9,1
+    in order to find them i built myself AVL Tree and then i figured that i need
+    to insert the number by levels (first the root then from left to right level 1, etc..)
+        
+==================
+=     Design     =
+==================
+
+AvlTree.java is using data structure placed in the AvlNode.

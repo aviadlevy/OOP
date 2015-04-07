@@ -1,0 +1,95 @@
+aviadle
+
+
+=======================================
+=  README for ex5:  File Processing   =
+=======================================
+
+===================================
+=     List Of Submitted Files     =
+===================================
+
+  README - This file
+  
+  Package: oop.ex6.filescript
+    FatalErrorException.java  -  Exception that handle Type II Error
+    MyFileScript.java  -  The manager that handle everything
+    Parsing.java   -   The parser that parsing every line
+    WarningException.java  -  Exception for Type I errors
+  
+  Package: oop.ex6.filescript.sections
+    Section.java
+    
+  Package: oop.ex6.filescript.sections.filters   -  All Filters and Factory
+    FileAll.java
+    FileBetween.java
+    FileExecutable.java
+    FileGreaterThan.java
+    FileHidden.java
+    FileNameContains.java
+    FileNameEquals.java
+    FileNameSuffix.java
+    FileNamePrefix.java
+    FileSmallerThan.java
+    FileWritable.java
+    NegFilter.java
+    FilterFactory.java
+    Filter.java
+    WarningBetweenVariablesException.java
+    WarningFilterNameException.java
+    WarningYesOrNoException.java
+    YesOrNoFilterParent.java  -  parent for all YES or NO filters
+  
+  Package: oop.ex6.filescript.sections.orders  -  all Orders and Factory
+    AbsoluteOrder.java
+    SizeOrder.java
+    TypeOrder.java
+    ReverseOrder.java
+    Order.java
+    OrderFactory.java
+    WarningInOrderNameException.java
+    
+=================================
+=     Question asked in pdf     =
+=================================
+1.  I'll describe the design for this project below.
+2.  I implement the design the way we've shown in class.
+3.  In case of a Type I error:
+	    I did in both factories (Filter/Order) defalut case if non of the allowed
+	    sequence was entered, to throw warning, and also in some special filters that
+	    need checking of the values i throw warning within the constructor. then i catched
+	    all Warnings in the Parsing proccess and handle them this way:
+	      - warning in Filter: - remember the line we're now checking (with array).
+	                           - define Filter to default (Filter "all")
+	      - warning in Order:  - remember the line we're now checking (with array).
+	                           - define Order to default (Order "abs")
+	    then, continue Parsing. I used this handling because I wanted to keep all warnings
+	    with its sections, so I'll be able to print as instructed (Warning section1,
+	    section1, Warning section2, section2...).
+	In case of a Type II errors:
+		I threw FatalError in Factory process, so if a Type II error has found, 
+		it will throw Exception to parsing, and then it will stop Parsing and
+		immediately will throw again up to the main script, will print "ERROR",
+		and stop program.
+ 4.  (I hope i understood the question correctly)
+     I used Comparator in order to sort an array of files.
+     
+     
+==================
+=     Design     =
+==================
+
+  The main script is MyFileScript that get 2 arguments, directory and command file.
+then it send the command file for Parsing.
+  The Parsing process use Scanner in order to iterate through all lines in file, and
+according to the line it check and parse. if the string fo filter or order is found,
+we send him to factory.
+  Both Factories works pretty much the same: we get the string, split and check which
+filter we've got, and if NOT/REVERSE is found. if filter is found, Great. if not,
+use Exception as i described above.
+  The parsing returned all sections after parsing in ArrayList (the easiest way i
+found to work with unknown size of array. maybe there is better way, and i would be
+happy to find out :-) ).
+  Then in the main file we iterate through all the sections: 1st check if any warning
+was found in parsing, then print the section with the filter and order we have.
+  THE END!!

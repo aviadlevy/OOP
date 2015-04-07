@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;SpaceShip.energy&apos; in &apos;SpaceShip&apos;&#x0D;&#x0A;- Original project: &apos;ex3&apos;&#x0D;&#x0A;- Original element: &apos;SpaceShip.energy&apos;&#x0D;&#x0A;- Getter method name: &apos;getEnergy&apos;&#x0D;&#x0A;- Setter method name: &apos;setEnergy&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type&#x0D;&#x0A;- Generate method comments" comments="true" declaring="true" description="Encapsulate field &apos;energy&apos;" flags="589830" getter="getEnergy" id="org.eclipse.jdt.ui.self.encapsulate" input="/&lt;{SpaceShip.java[SpaceShip^energy" insertion="0" setter="setEnergy" stamp="1396773743014" version="1.0" visibility="1"/>
+</session>

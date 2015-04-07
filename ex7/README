@@ -1,0 +1,114 @@
+aviadle
+noammt
+
+==============================================
+=  README for ex7: Simplified Java Complier  =
+==============================================
+
+==================
+=  Description:  =
+==================
+
+A Java implementation of a simplified java compiler: a moderate java code
+checker.
+
+usage: java oop.ex7.main.Sjavac <javacode>
+
+
+=========================
+=  Files Descriptions:  =
+=========================
+
+README				   				This file
+
+package: oop.ex7.main -
+Sjavac.java          	    		Parent class, contains main method
+RegExPatterns.java          	    Contains a collection of RegEx patterns
+Parser.java			         	    Contains the main code parser of compiler
+SyntaxErrorException.java           Contains the main syntax error exception
+
+package: oop.ex7.main.Condition -
+Condition.java						Contains validation methods to if/while blocks
+ConditionErrorException.java		Contains if/while blocks error exception
+
+package: oop.ex7.main.Function -
+Function.java						Contains all operations for function block
+ReturnVoid.java						Contains a helper class to treat void return
+FunctionErrorException.java			Contains function error exception
+ReturnValueException.java			Contains return command error exception
+
+package: oop.ex7.main.Variable -
+Variable.java						Contains variables' interface
+VariableFactory.java				Contains variables creator and related methods
+GeneralCheck.java					Contains general checks for program
+IntegerVariable.java				Contains class for int variables
+DoubleVariable.java					Contains class for double variables
+StringVariable.java					Contains class for String variables
+CharVariable.java					Contains class for char variables
+BooleanVariable.java				Contains class for boolean variables
+ToArray.java						Contains an array decorator
+VariableErrorException.java			Contains variables' error exception
+
+
+Design and Answers
+**********************
+
+6.1 Error handling
+we handle with two kinds of errors: I/O errors and syntax error. we separated
+syntax errors to some different cases: return value errors extends the variable
+errors, and variable, function and condition errors extends the main syntax 
+errors (in file: SyntaxErrorException.java). each child-exception is sending a 
+relevant error message to the parent-exception for printing it to user.
+
+6.2 OOD
+because the main and almost-only purpose of the program is to parse and validate
+java code file, we implements most of the operations - the reading and parsing
+of the input code - in the Parser class. this class sends each relevant block or
+line to the right class to parse it and validate the correctness of it. so we
+placed the main parser in the main package, with the main method (Sjavac class) 
+and the RegEx patterns (to make the code more "clean" and readable we gathered
+most of the significant RegEx patterns in one place - see: RegExPatterns.java).
+then we divided each block / line treatment to different packages: Condition,
+that operates on if and while blocks (there isn't a real difference between those
+two, so we handle it in the same class), Function and Variable. the variables in
+the program are defined as Variable objects, implements according to the Variable
+interface we created. that way we could know which variable was created in the
+code and to access their parameters (such as name, value, scope level etc.).
+in the variable factory we recognized what the line should do, and acted
+respectively. if we noticed that we should refer the variable as an array of the
+specific variable's type, we sent the operation to an array decorator, instead
+of creating double cases for each variable type array. common general checks was
+gathered in the GeneralChecks class, to save code and make our code more readable.
+
+How would you modify your code to add new types of variables?
+-> in order to add the possibility for a new variable type, we just have to add
+the new type's name to the "TYPE" constant in the RegEx's collection as we
+described above, create a new Variable class for the new type and add an option
+to create it in the variables factory. also, we should validate it's correctness
+according to its definitions (kind of values, for example).
+
+if-else block:
+-> we should have check if the else is not an "orphan" (without if statement
+before it), probably in the Condition class. we also had to change the 
+RegExPatterns class (add the right regex to recognize the else line) and the
+main parser class (Parser.java) so it could treat the else line as needed.
+
+6.3 Regular Expressions
+
+variable general pattern:
+^\\s*(void|int|double|boolean|char|String)(\\[\\])?\\s+(\\S*)(\\s*=\\s*(.*))?\\s*;\\s*$
+-> we checked that only a valid variable type can be used, then we checked the
+case of an array ([] brackets), and in the right places after that regex first
+check we validated the input value according to the variable type (for example,
+"true" or "false" only for a boolean variable).
+we enabled as many as wanted spaces in any possible place in the string.
+
+function declaration:
+^\\s*((void|int|double|boolean|char|String)(\\[\\])?)\\s+([a-zA-Z]\\w*)\\((.*)\\)\\s*\\{\\s*$
+-> this regex should check the correctness of a function declaration line:
+it's make sure that a valid return value has given to the function, variable 
+type or an array. then it's checks the validation of the function name according
+to the instructions of exercise, enables the ability to have function arguments
+and looks for the open curly bracket for the function block.
+as in the previous regex code, also here we enabled as many as wanted spaces in
+all possible places in the declaration line.

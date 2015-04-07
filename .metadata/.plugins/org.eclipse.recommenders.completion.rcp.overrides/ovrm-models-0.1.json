@@ -1,0 +1,32 @@
+{
+  "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex2\\src": {
+    "location": "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex2\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex2\\src\u0027. Skipped."
+  },
+  "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex2n": {
+    "location": "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex2n",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex2n\u0027. Skipped."
+  },
+  "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex3": {
+    "location": "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex3",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex3\u0027. Skipped."
+  },
+  "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex4": {
+    "location": "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex4",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex4\u0027. Skipped."
+  },
+  "C:\\Program Files\\Java\\jre7\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:ovrm:1.0.0",
+    "location": "C:\\Program Files\\Java\\jre7\\lib\\rt.jar",
+    "status": "RESOLVED"
+  },
+  "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex7\\src": {
+    "location": "C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex7\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\win7\\Dropbox\\לימודים\\OOP\\ex7\\src\u0027. Skipped."
+  }
+}

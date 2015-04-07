@@ -1,0 +1,80 @@
+aviadle
+
+
+================================
+=  README for ex3: Space Wars  =
+================================
+
+
+==================
+=  Description:  =
+==================
+
+this jar file contain-
+    SpaceShip.java - the parent class for all kind of ships. it contain all the
+    things that the ship can do.
+    
+    HumanShip.java - this class implement a ship controlled by the user
+    
+    AggressiveShip.java - this class implement a ship that pursues other ships and
+    tries to fire at them. 
+    
+    BasherShip.java - this class implement a ship that attempts to collide with
+    other ships.
+    
+    DrunkShip.java - this class implement a ship that its pilot had a tad too much.
+    every move is random.
+    
+    RunnerShip.java - this class implement a ship that attempts to run away from
+    the fight. It will always accelerate and constantly turn away from the
+    closest ship.
+    
+    SpecialShip.java - this class implement a ship that able to hide in another 
+    ship.
+    
+    SpaceShipFactory.java - Creates a ships array based on the letters in a given
+    string array
+
+===================================
+=     List Of Submitted Files     =
+===================================
+
+  README This file
+
+  SpaceShip.java Parent class to all ships
+
+  HumanShip.java Implements HumanShip, as described above
+  BasherShip.java Implements BasherShip, as described above
+  RunnerShip.java Implements RunnerShip, as described above
+  AggressiveShip.java Implements AggressiveShip, as described above
+  SpecialShip.java Implements SpecialShip, as described above
+  
+  SpaceShipFactory.java - Creates a ships array, as described above
+  
+  SpaceShipTester.java - the JUnit the tests the classes here
+    
+=================
+=     Usage     =
+=================
+
+usage: java SpaceWars <spaceship types>
+
+...in which "spaceship types" can be the following letters corresponding to
+specific spaceships:
+
+  h - Human Ship
+  c - Crazy Ship
+  f - Floater Ship
+  b - Basher Ship
+  r - Runner Ship
+  a - Aggressive Ship
+  s - Special Ship
+
+
+==================
+=     Design     =
+==================
+
+Spaceship.java is the abstract parent that inherited form oop.ex3. all the other
+ship is the children that override the abstract method (doAction).
+

@@ -1,0 +1,29 @@
+all the regex take spaces from the start and the end in considirestion
+
+int: 
+^\s*-?\d+\s*$
+
+double: 
+^\s*-?\d+[.]?\d+\s*$
+
+String: 
+^\s*".*"\s*$
+
+Char:
+^\s*'.?'\s*$
+
+boolean: 
+^\s*true\s*$|^\s*false\s*$
+
+comment:
+^[/]{2}.*$
+
+function:
+^\s*[a-zA-Z]\w*\(.*\)\s*$
+
+variable line:  הוספתי כבר גרשיים כדי לכתוב הערות. להעתיק איך שזה למשתנה סטרינג שניצו
+"^\s*(int|double|boolean|char|String)(\[\])?\s+" +  //all the possible members
+"(_\w+|[a-zA-Z]\w*)" +  //all the names possible
+"\s*=\s*(\w*)?\s*;$"   //initialization, optional!
+
+http://regexr.com/
